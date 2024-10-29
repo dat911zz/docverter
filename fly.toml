@@ -11,6 +11,10 @@ kill_timeout = 5
   LD_LIBRARY_PATH = "/app/calibre/lib"
   # Add any other environment variables your app needs
 
+# Define the processes your app will run
+[processes]
+  web = "gem install foreman; foreman start;" # Replace with the command to start your app, e.g., "bundle exec ruby app.rb"
+
 [[services]]
   http_checks = []
   processes = ["web"]
