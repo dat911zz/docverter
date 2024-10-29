@@ -4,7 +4,7 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 
 [build]
-  builder = "rubylang/ruby"  # Use the appropriate builder
+  builder = "heroku/ruby"  # Use the appropriate builder
 
 [env]
   PATH = "bin:/app/bin:/app/jruby/bin:/usr/bin:/bin:/app/calibre/bin"
