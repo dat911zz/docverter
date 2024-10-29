@@ -1,0 +1,28 @@
+app = "docverterz" # Replace with your Fly.io app name
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[build]
+  builder = "heroku/buildpacks:20"  # Use the appropriate builder
+
+[env]
+  PATH = "bin:/app/bin:/app/jruby/bin:/usr/bin:/bin:/app/calibre/bin"
+  LD_LIBRARY_PATH = "/app/calibre/lib"
+  # Add any other environment variables your app needs
+
+[[services]]
+  http_checks = []
+  processes = ["web"]
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = "8080" # Adjust according to your application’s port
+
+  [[services.tcp_checks]]
+    interval = 10000
+    timeout = 2000
+    grace = 10000
+    method = "GET"
+    path = "/"
+    protocol = "tcp"
